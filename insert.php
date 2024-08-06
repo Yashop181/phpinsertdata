@@ -5,28 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <body>
+    <style>
+          .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin-top: 20px;
+        }
 
-<form action="save.php" method="post">
-        <div>
-            <label for="rollno">Roll No:</label>
-            <input type="text"  name="rno" >
-        </div>
-        <div>
-            <label for="name">Name:</label>
-            <input type="text"  name="nm" >
-        </div>
-        <div>
-            <label for="city">City:</label>
-            <input type="text"  name="ct" >
-        </div>
-        <div>
-            <label for="fees">Fees:</label>
-            <input type="number"  name="fs" >
-        </div>
-        <div>
-            <input type="submit" value="save" >
-        </div>
-    </form>
+        .form-container div {
+            margin-bottom: 15px;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+<?php include "include/topnavbar.php" ?>
+<center>
+<h1>Student Registration</h1>
+    <form action="save.php" method="post" class="form-container">
+            <div>
+                <label for="rollno">Roll No:</label>
+                <input type="text" name="rno" id="rollno">
+            </div>
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="nm" id="name">
+            </div>
+            <div>
+                <label for="city">City:</label>
+                <input type="text" name="ct" id="city">
+            </div>
+            <div>
+                <label for="fees">Fees:</label>
+                <input type="number" name="fs" id="fees">
+            </div>
+            <div>
+                <input type="submit" value="Save">
+            </div>
+        </form>
+        </center>
+
 </body>
 </html>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
