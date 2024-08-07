@@ -71,6 +71,36 @@
         .form-container input[type="submit"]:hover {
             background-color: #45a049;
         }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #f9f9f9;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #ff9800;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        td {
+            border: 1px solid #ddd;
+        }
     </style>
 </head>
 <body>
@@ -80,9 +110,30 @@
             <a href="insert.php">Insert</a>
             <a href="display.php">Display</a>
         </div>
-        <h1>Insert  page</h1>
+        <h1>Display page</h1>
     </div>
-    <!--  -->
-    
+    <table>
+        <tr>
+            <th>Emp rno</th>
+            <th>Emp name</th>
+            <th>Emp city</th>
+            <th>Emp fees</th>
+        </tr>
+        <?php 
+            $con = new mysqli("localhost", "root", "", "bhopal");
+            $qry = "SELECT * FROM student";
+
+            $result = $con->query($qry);
+
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                    echo "<td>".$row["rollno"]."</td>";
+                    echo "<td>".$row["name"]."</td>";
+                    echo "<td>".$row["city"]."</td>";
+                    echo "<td>".$row["fees"]."</td>";
+                echo "</tr>";
+            }
+        ?>
+    </table>
 </body>
 </html>
