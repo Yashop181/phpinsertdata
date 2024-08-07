@@ -43,34 +43,6 @@ if(isset($_POST["submit"]))
         }
 
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .navbar {
-            width: 100%;
-            background-color: #333;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-            font-weight: bold;
-        }
-
-        .navbar a:hover {
-            background-color: #575757;
-            border-radius: 4px;
-        }
-
         .form-container {
             background: #fff;
             padding: 20px;
@@ -158,6 +130,7 @@ if(isset($_POST["submit"]))
             <a href="insert.php">Insert</a>
             <a href="display.php">Display</a>
             <a href="search.php">Search</a>
+            <a href="update.php">Update</a>
         </div>
         <h1>Search page</h1>
     </div>
