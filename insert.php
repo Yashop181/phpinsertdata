@@ -4,11 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<body>
     <style>
-          .form-container {
+        .container {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px 15px;
+            margin: 0 5px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            border-radius: 4px;
+        }
+
+        .form-container {
             background: #fff;
             padding: 20px;
             border-radius: 8px;
@@ -47,12 +71,10 @@
         .form-container input[type="submit"]:hover {
             background-color: #45a049;
         }
-
     </style>
-<?php include "include/topnavbar.php" ?>
-<center>
-<h1>Student Registration</h1>
-    <form action="save.php" method="post" class="form-container">
+</head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<body>
             <div>
                 <label for="rollno">Roll No:</label>
                 <input type="text" name="rno" id="rollno">

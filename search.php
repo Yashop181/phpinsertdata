@@ -1,3 +1,13 @@
+<?php
+// Check if the form has been submitted
+if(isset($_POST["submit"]))
+{
+     // Retrieve the roll number from the form
+    $rollno=$_POST["rno"];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +42,7 @@
             border-radius: 4px;
         }
 
+
         .form-container {
             background: #fff;
             padding: 20px;
@@ -39,55 +50,55 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 300px;
             margin-top: 20px;
-        }
-
-        .form-container div {
-            margin-bottom: 15px;
+            text-align: center;
         }
 
         .form-container label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             font-weight: bold;
         }
 
-        .form-container input[type="text"],
-        .form-container input[type="number"] {
-            width: 100%;
+        .form-container input[type="text"] {
+            width: calc(100% - 16px);
             padding: 8px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            margin-bottom: 15px;
         }
 
-        .form-container input[type="submit"] {
+        .form-container button {
+            width: 100%;
             background-color: #4CAF50;
             color: white;
-            padding: 10px 15px;
+            padding: 10px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
         }
 
-        .form-container input[type="submit"]:hover {
+        .form-container button:hover {
             background-color: #45a049;
         }
 
         table {
-            width: 80%;
-            margin: 20px auto;
+            width: 100%;
+            margin-top: 20px;
             border-collapse: collapse;
-            background-color: #f9f9f9;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
         }
 
         th, td {
             padding: 12px;
-            text-align: center;
+            text-align: left;
         }
 
         th {
             background-color: #4CAF50;
             color: white;
-            font-weight: bold;
         }
 
         tr:nth-child(even) {
@@ -95,15 +106,23 @@
         }
 
         tr:hover {
-            background-color: #e0e0e0;
+            background-color: #ddd;
         }
 
-        td {
-            border: 1px solid #ddd;
+        h1 {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .form-container
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
         }
     </style>
 </head>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <body>
     <div class="container">
         <div class="navbar">
@@ -113,38 +132,52 @@
             <a href="search.php">Search</a>
             <a href="update.php">Update</a>
         </div>
-        <h1>Display page</h1>
+        <h1>Search page</h1>
     </div>
-    <table>
-        <tr>
-            <th>Emp rno</th>
-            <th>Emp name</th>
-            <th>Emp city</th>
-            <th>Emp fees</th>
-        </tr>
-        <?php 
-            $con = new mysqli("localhost", "root", "", "bhopal");
-            $qry = "SELECT * FROM student";
+    <div class="form-container">
+    <form action="search.php" method="post">
+        <label >Enter Rollno</label>
+        <input type="text" name="rno" />
+        <button type="submit" name="submit">Submit</button>
+    </form>
+    </div>
 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Rollno</th>
+                <th>name</th>
+                <th>city</th>
+                <th>fees</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            // Check if form has been submitted and process the input
+            if(isset($_POST["submit"]))
+            {
+                  // Establish database connection
+                $con = new mysqli("localhost", "root", "", "bhopal");
 
+                 // Prepare SQL query to fetch student data based on roll number
+                $qry ="select * from student where rollno=$rollno";
 
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
+                $result=$con->query($qry);
+
+                 // Fetch and display results in table rows
+                while($row=$result->fetch_assoc())
+                {
+                    echo "<tr>";
                     echo "<td>".$row["rollno"]."</td>";
                     echo "<td>".$row["name"]."</td>";
                     echo "<td>".$row["city"]."</td>";
                     echo "<td>".$row["fees"]."</td>";
-                echo "</tr>";
+                    echo "</tr>";
+                }
             }
-        ?>
+            ?>
+        </tbody>
+
     </table>
 </body>
 </html>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-
-<!-- include and req is PHP 
- include annd req method are userd to included external php file in our main page but the basic diff is that include gerante just warning when included file does not avilable wher  
--->
